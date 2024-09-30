@@ -117,26 +117,24 @@ export default function Home() {
         } shadow-sm`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          {/* Mobilde sadece sabit logo */}
           <div className="lg:hidden text-2xl font-bold transition-colors">
             <Image
               width={48}
               height={48}
-              src={"/images/logo.png"}
+              src="/images/logo.png"
               alt="Site Logo"
               className="transition-colors z-50"
             />
           </div>
 
-          <div className="lg:block text-2xl font-bold transition-colors">
+          {/* Masaüstü için değişken logo */}
+          <div className="hidden lg:block text-2xl font-bold transition-colors">
             <Image
               width={48}
               height={48}
               src={
-                isMobile
-                  ? "/images/logo.png"
-                  : scrollY > 50
-                  ? "/images/logo-inverse.png"
-                  : "/images/logo.png"
+                scrollY > 50 ? "/images/logo-inverse.png" : "/images/logo.png"
               }
               alt="Site Logo"
               className="transition-colors z-50"
@@ -263,39 +261,6 @@ export default function Home() {
               </li>
             </ul>
           </nav>
-
-          {/* Sosyal medya ikonları */}
-          <div
-            className={`hidden lg:block transition-colors ${
-              scrollY > 50
-                ? "text-primary-foreground hover:text-cyan-300"
-                : "text-gray-600 hover:text-red-600"
-            }`}
-          >
-            <a
-              href="https://www.instagram.com/ozkansurucukursu"
-              target="_blank"
-            >
-              <InstagramIcon
-                style={{ height: "32px", width: "32px", marginRight: "5px" }}
-                className={`transition-colors ${
-                  scrollY > 50
-                    ? "text-primary-foreground hover:text-cyan-300"
-                    : "text-red-600 hover:text-cyan-300"
-                }`}
-              />
-            </a>
-            <a href="https://www.facebook.com/ozkansurucukursu" target="_blank">
-              <FacebookRoundedIcon
-                style={{ height: "32px", width: "32px" }}
-                className={`transition-colors ${
-                  scrollY > 50
-                    ? "text-primary-foreground hover:text-cyan-300"
-                    : "text-red-600 hover:text-cyan-300"
-                }`}
-              />
-            </a>
-          </div>
         </div>
 
         {/* Hamburger Menü (Mobil cihazlarda görünür) */}
