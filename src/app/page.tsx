@@ -19,7 +19,7 @@ import CloseIcon from "@mui/icons-material/Close";
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Hamburger menü durumu
-  const menuRef = useRef(null); // Hamburger menüsü için referans
+  const menuRef = useRef<HTMLDivElement | null>(null); // Ref tipi tanımlandı
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -56,7 +56,7 @@ export default function Home() {
   // Menü dışına tıklanınca menüyü kapatmak için
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // MouseEvent tipi eklendi
+      // Menü referansı mevcutsa ve tıklanan hedef menü değilse
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsMenuOpen(false);
       }
@@ -68,6 +68,7 @@ export default function Home() {
       window.removeEventListener("mousedown", handleClickOutside);
     }
 
+    // Cleanup function
     return () => {
       window.removeEventListener("mousedown", handleClickOutside);
     };
