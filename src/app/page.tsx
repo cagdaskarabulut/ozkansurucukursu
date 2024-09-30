@@ -102,7 +102,7 @@ export default function Home() {
               src={
                 scrollY > 50
                   ? "/images/logo-inverse.png"
-                  : "/images/logo.png" || "/images/default-logo.png"
+                  : "/images/logo.png" || "/images/logo.png"
               } // Default logo eklendi
               alt="Site Logo"
               className="transition-colors"
