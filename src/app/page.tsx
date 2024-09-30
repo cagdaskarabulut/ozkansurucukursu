@@ -117,11 +117,10 @@ export default function Home() {
         } shadow-sm`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          {/* Mobilde sadece sabit logo */}
-          <div className="lg:hidden text-2xl font-bold transition-colors">
-            <Image
-              width={48}
-              height={48}
+          <div className="lg:hidden">
+            <img
+              width="48"
+              height="48"
               src="/images/logo.png"
               alt="Site Logo"
               className="transition-colors z-50"
@@ -129,10 +128,10 @@ export default function Home() {
           </div>
 
           {/* Masaüstü için değişken logo */}
-          <div className="hidden lg:block text-2xl font-bold transition-colors">
-            <Image
-              width={48}
-              height={48}
+          <div className="hidden lg:block">
+            <img
+              width="48"
+              height="48"
               src={
                 scrollY > 50 ? "/images/logo-inverse.png" : "/images/logo.png"
               }
