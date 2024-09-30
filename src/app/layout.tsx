@@ -26,10 +26,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="/css/tooplate-gymso-style.css" />
-
         <meta name="title" content={title} />
         <meta data-rh="true" property="og:title" content={title} />
         <meta data-rh="true" property="twitter:title" content={title} />
