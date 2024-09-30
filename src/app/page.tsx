@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import MyImageSlider from "../components/myComponents/MyImageSlider";
 import MyServices from "../components/pageComponents/MyServices";
 import MyTeam from "../components/pageComponents/MyTeam";
@@ -12,7 +12,6 @@ import Link from "next/link";
 import Image from "next/image";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
-import YouTubeIcon from "@mui/icons-material/YouTube";
 import CallMeBackForm from "../components/pageComponents/CallMeBackForm";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -20,6 +19,7 @@ import CloseIcon from "@mui/icons-material/Close";
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Hamburger menü durumu
+  const menuRef = useRef(null); // Hamburger menüsü için referans
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,7 +30,7 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.1 } // Elemanın %10'u görünür olduğunda animasyon başlar
+      { threshold: 0.1 }
     );
 
     const elements = document.querySelectorAll(".animate-on-scroll");
@@ -53,11 +53,29 @@ export default function Home() {
     };
   }, []);
 
+  // Menü dışına tıklanınca menüyü kapatmak için
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      window.addEventListener("mousedown", handleClickOutside);
+    } else {
+      window.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
   const handleScroll = (sectionId: string) => {
-    setScrollY(window.scrollY);
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" }); // Ekran yavaşça kayar
+      section.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -69,22 +87,22 @@ export default function Home() {
     return (
       <header
         className={`fixed w-full z-50 opacity-90 transition-colors duration-300 ${
-          scrollY > 50 ? "bg-red-600 text-white" : "bg-white text-gray-600"
+          scrollY > 50
+            ? "bg-primary text-primary-foreground"
+            : "bg-white text-gray-600"
         } shadow-sm`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div
-            className={`text-2xl font-bold transition-colors ${
-              scrollY > 50 ? "text-white" : "text-red-600"
-            }`}
-          >
+          <div className="text-2xl font-bold transition-colors">
             <Image
               width={48}
               height={48}
               src={
-                scrollY > 50 ? "/images/logo-inverse.png" : "/images/logo.png"
-              }
-              alt={process.env.PROJECT_SITE_NAME + "-logo"}
+                scrollY > 50
+                  ? "/images/logo-inverse.png"
+                  : "/images/logo.png" || "/images/default-logo.png"
+              } // Default logo eklendi
+              alt="Site Logo"
               className="transition-colors"
             />
           </div>
@@ -93,9 +111,21 @@ export default function Home() {
           <div className="lg:hidden">
             <button onClick={toggleMenu}>
               {isMenuOpen ? (
-                <CloseIcon className="text-white" />
+                <CloseIcon
+                  className={
+                    scrollY > 50
+                      ? "bg-primary text-primary-foreground"
+                      : "text-primary-foreground text-primary"
+                  }
+                />
               ) : (
-                <MenuIcon className="text-red-600" />
+                <MenuIcon
+                  className={
+                    scrollY > 50
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-white bg-primary"
+                  }
+                />
               )}
             </button>
           </div>
@@ -108,7 +138,7 @@ export default function Home() {
                   <span
                     className={`font-bold relative pb-1 group ${
                       scrollY > 50
-                        ? "text-white hover:text-cyan-300"
+                        ? "text-primary-foreground hover:text-cyan-300"
                         : "text-gray-600 hover:text-red-600"
                     }`}
                   >
@@ -125,7 +155,7 @@ export default function Home() {
                   <span
                     className={`font-bold relative pb-1 group ${
                       scrollY > 50
-                        ? "text-white hover:text-cyan-300"
+                        ? "text-primary-foreground hover:text-cyan-300"
                         : "text-gray-600 hover:text-red-600"
                     }`}
                   >
@@ -142,7 +172,7 @@ export default function Home() {
                   <span
                     className={`font-bold relative pb-1 group ${
                       scrollY > 50
-                        ? "text-white hover:text-cyan-300"
+                        ? "text-primary-foreground hover:text-cyan-300"
                         : "text-gray-600 hover:text-red-600"
                     }`}
                   >
@@ -162,7 +192,7 @@ export default function Home() {
                   <span
                     className={`font-bold relative pb-1 group ${
                       scrollY > 50
-                        ? "text-white hover:text-cyan-300"
+                        ? "text-primary-foreground hover:text-cyan-300"
                         : "text-gray-600 hover:text-red-600"
                     }`}
                   >
@@ -179,7 +209,7 @@ export default function Home() {
                   <span
                     className={`font-bold relative pb-1 group ${
                       scrollY > 50
-                        ? "text-white hover:text-cyan-300"
+                        ? "text-primary-foreground hover:text-cyan-300"
                         : "text-gray-600 hover:text-red-600"
                     }`}
                   >
@@ -198,7 +228,7 @@ export default function Home() {
           <div
             className={`hidden lg:block transition-colors ${
               scrollY > 50
-                ? "text-white hover:text-cyan-300"
+                ? "text-primary-foreground hover:text-cyan-300"
                 : "text-gray-600 hover:text-red-600"
             }`}
           >
@@ -210,7 +240,7 @@ export default function Home() {
                 style={{ height: "32px", width: "32px", marginRight: "5px" }}
                 className={`transition-colors ${
                   scrollY > 50
-                    ? "text-white hover:text-cyan-300"
+                    ? "text-primary-foreground hover:text-cyan-300"
                     : "text-red-600 hover:text-cyan-300"
                 }`}
               />
@@ -220,7 +250,7 @@ export default function Home() {
                 style={{ height: "32px", width: "32px" }}
                 className={`transition-colors ${
                   scrollY > 50
-                    ? "text-white hover:text-cyan-300"
+                    ? "text-primary-foreground hover:text-cyan-300"
                     : "text-red-600 hover:text-cyan-300"
                 }`}
               />
@@ -230,7 +260,10 @@ export default function Home() {
 
         {/* Hamburger Menü (Mobil cihazlarda görünür) */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-white shadow-lg absolute top-full left-0 w-full">
+          <div
+            ref={menuRef}
+            className="lg:hidden bg-white shadow-lg absolute top-full left-0 w-full"
+          >
             <ul className="flex flex-col space-y-4 p-4">
               <li>
                 <button onClick={() => handleScroll("anasayfa")}>
@@ -271,7 +304,7 @@ export default function Home() {
 
   const MyFooter = () => {
     return (
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-primary-foreground py-12">
         <div className="container mx-auto px-4 grid md:grid-cols-4 gap-8">
           <div>
             <h5 className="text-xl font-bold mb-4">Adres</h5>
@@ -354,7 +387,6 @@ export default function Home() {
         {/* Ayıraç Çizgisi ve Alt Metinler */}
         <div className="mt-8 pt-4">
           <div className="w-4/5 mx-auto border-t border-gray-700"></div>{" "}
-          {/* Yatay çizgi */}
           <div className="flex flex-col md:flex-row justify-between items-center mt-4 mx-32">
             <p className="text-sm">
               © Özkan Sürücü Kursu, All Rights Reserved.
@@ -377,12 +409,6 @@ export default function Home() {
       <section id="hizmetlerimiz" className="animate-on-scroll py-16">
         <MyServices />
       </section>
-      {/* <section id="galeri" className="animate-on-scroll py-16 bg-gray-100">
-        <MyGallery />
-      </section> */}
-      {/* <section id="ekibimiz" className="animate-on-scroll py-16">
-        <MyTeam />
-      </section> */}
       <section id="yorumlar" className="animate-on-scroll py-16 bg-gray-100">
         <MyTestimonials />
       </section>
