@@ -21,6 +21,26 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Hamburger menü durumu
   const menuRef = useRef<HTMLDivElement | null>(null); // Ref tipi tanımlandı
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // 768px altındaki genişlikler mobil cihaz olarak kabul edilir
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Sayfa ilk yüklendiğinde ekran genişliğini kontrol et
+    handleResize();
+
+    // Ekran boyutu değiştiğinde handleResize'i tetikleyelim
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup: event listener'ı kaldırıyoruz
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -89,7 +109,9 @@ export default function Home() {
     return (
       <header
         className={`fixed w-full z-50 opacity-90 transition-colors duration-300 ${
-          scrollY > 50
+          isMobile
+            ? "bg-white text-gray-600"
+            : scrollY > 50
             ? "bg-primary text-primary-foreground"
             : "bg-white text-gray-600"
         } shadow-sm`}
@@ -100,7 +122,9 @@ export default function Home() {
               width={48}
               height={48}
               src={
-                (scrollY ?? 0) > 50
+                isMobile
+                  ? "/images/logo.png"
+                  : scrollY > 50
                   ? "/images/logo-inverse.png"
                   : "/images/logo.png"
               }
@@ -115,7 +139,9 @@ export default function Home() {
               {isMenuOpen ? (
                 <CloseIcon
                   className={
-                    scrollY > 50
+                    isMobile
+                      ? ""
+                      : scrollY > 50
                       ? "bg-primary text-primary-foreground"
                       : "text-primary-foreground text-primary"
                   }
@@ -123,7 +149,9 @@ export default function Home() {
               ) : (
                 <MenuIcon
                   className={
-                    scrollY > 50
+                    isMobile
+                      ? ""
+                      : scrollY > 50
                       ? "bg-primary text-primary-foreground"
                       : "bg-white bg-primary"
                   }
