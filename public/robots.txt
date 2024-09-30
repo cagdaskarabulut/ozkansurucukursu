@@ -1,0 +1,6 @@
+# Allow all web crawlers access to all content
+User-agent: *
+Disallow: 
+
+# Sitemaps
+Sitemap: https://www.ozkansurucukursu.com.tr/sitemap.xml
