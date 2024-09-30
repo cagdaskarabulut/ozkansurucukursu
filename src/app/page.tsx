@@ -109,9 +109,7 @@ export default function Home() {
     return (
       <header
         className={`fixed w-full z-50 opacity-90 transition-colors duration-300 ${
-          isMobile
-            ? "bg-white text-gray-600"
-            : scrollY > 50
+          scrollY > 50
             ? "bg-primary text-primary-foreground"
             : "bg-white text-gray-600"
         } shadow-sm`}
@@ -146,9 +144,7 @@ export default function Home() {
               {isMenuOpen ? (
                 <CloseIcon
                   className={
-                    isMobile
-                      ? ""
-                      : scrollY > 50
+                    scrollY > 50
                       ? "bg-primary text-primary-foreground"
                       : "text-primary-foreground text-primary"
                   }
@@ -156,9 +152,7 @@ export default function Home() {
               ) : (
                 <MenuIcon
                   className={
-                    isMobile
-                      ? ""
-                      : scrollY > 50
+                    scrollY > 50
                       ? "bg-primary text-primary-foreground"
                       : "bg-white bg-primary"
                   }
