@@ -1,8 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Gymso Fitness",
-  description: "Upgrade your body at Gymso Fitness",
+  title:
+    "Özel Özkan Sürücü Kursu | Samsun ve Bafra'da Profesyonel Sürüş Eğitimi | B, B1, A, A1, A2, D, D1, M Sınıfı Ehliyet | Güvenli Sürüş",
+  description:
+    "Özel Özkan Sürücü Kursu, Samsun ve Bafra'da profesyonel eğitmenler eşliğinde B, B1, A, A1, A2, D, D1 ve M sınıfı ehliyetler için güvenli sürüş eğitimi sunar. Deneyimli kadromuz ve modern araçlarımızla, sürüş becerilerinizi geliştirin ve hızlıca ehliyetinizi kazanın. Bafra ve Samsun'da en iyi ehliyet kursu arayışınızda doğru adrestesiniz.",
 };
 
 export default function RootLayout({
