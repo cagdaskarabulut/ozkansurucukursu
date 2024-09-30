@@ -100,10 +100,8 @@ export default function Home() {
               width={48}
               height={48}
               src={
-                scrollY > 50
-                  ? "/images/logo-inverse.png"
-                  : "/images/logo.png" || "/images/logo.png"
-              } // Default logo eklendi
+                scrollY > 50 ? "/images/logo-inverse.png" : "/images/logo.png"
+              }
               alt="Site Logo"
               className="transition-colors"
             />
