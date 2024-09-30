@@ -21,26 +21,6 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Hamburger menü durumu
   const menuRef = useRef<HTMLDivElement | null>(null); // Ref tipi tanımlandı
 
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      // 768px altındaki genişlikler mobil cihaz olarak kabul edilir
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    // Sayfa ilk yüklendiğinde ekran genişliğini kontrol et
-    handleResize();
-
-    // Ekran boyutu değiştiğinde handleResize'i tetikleyelim
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup: event listener'ı kaldırıyoruz
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -115,26 +95,15 @@ export default function Home() {
         } shadow-sm`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="lg:hidden">
+          <div className="text-2xl font-bold transition-colors">
             <img
-              width="48"
-              height="48"
-              src="/images/logo.png"
-              alt="Site Logo"
-              className="transition-colors z-50"
-            />
-          </div>
-
-          {/* Masaüstü için değişken logo */}
-          <div className="hidden lg:block">
-            <img
-              width="48"
-              height="48"
+              width={48}
+              height={48}
               src={
                 scrollY > 50 ? "/images/logo-inverse.png" : "/images/logo.png"
               }
               alt="Site Logo"
-              className="transition-colors z-50"
+              className="transition-colors"
             />
           </div>
 
@@ -142,13 +111,7 @@ export default function Home() {
           <div className="lg:hidden">
             <button onClick={toggleMenu}>
               {isMenuOpen ? (
-                <CloseIcon
-                  className={
-                    scrollY > 50
-                      ? "bg-primary text-primary-foreground"
-                      : "text-primary-foreground text-primary"
-                  }
-                />
+                <CloseIcon />
               ) : (
                 <MenuIcon
                   className={
@@ -254,6 +217,39 @@ export default function Home() {
               </li>
             </ul>
           </nav>
+
+          {/* Sosyal medya ikonları */}
+          <div
+            className={`hidden lg:block transition-colors ${
+              scrollY > 50
+                ? "text-primary-foreground hover:text-cyan-300"
+                : "text-gray-600 hover:text-red-600"
+            }`}
+          >
+            <a
+              href="https://www.instagram.com/ozkansurucukursu"
+              target="_blank"
+            >
+              <InstagramIcon
+                style={{ height: "32px", width: "32px", marginRight: "5px" }}
+                className={`transition-colors ${
+                  scrollY > 50
+                    ? "text-primary-foreground hover:text-cyan-300"
+                    : "text-red-600 hover:text-cyan-300"
+                }`}
+              />
+            </a>
+            <a href="https://www.facebook.com/ozkansurucukursu" target="_blank">
+              <FacebookRoundedIcon
+                style={{ height: "32px", width: "32px" }}
+                className={`transition-colors ${
+                  scrollY > 50
+                    ? "text-primary-foreground hover:text-cyan-300"
+                    : "text-red-600 hover:text-cyan-300"
+                }`}
+              />
+            </a>
+          </div>
         </div>
 
         {/* Hamburger Menü (Mobil cihazlarda görünür) */}
