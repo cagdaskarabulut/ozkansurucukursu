@@ -117,7 +117,17 @@ export default function Home() {
         } shadow-sm`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold transition-colors">
+          <div className="lg:hidden text-2xl font-bold transition-colors">
+            <Image
+              width={48}
+              height={48}
+              src={"/images/logo.png"}
+              alt="Site Logo"
+              className="transition-colors z-50"
+            />
+          </div>
+
+          <div className="lg:block text-2xl font-bold transition-colors">
             <Image
               width={48}
               height={48}
@@ -129,7 +139,7 @@ export default function Home() {
                   : "/images/logo.png"
               }
               alt="Site Logo"
-              className="transition-colors"
+              className="transition-colors z-50"
             />
           </div>
 
