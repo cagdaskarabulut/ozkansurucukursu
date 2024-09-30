@@ -55,8 +55,9 @@ export default function Home() {
 
   // Menü dışına tıklanınca menüyü kapatmak için
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      // MouseEvent tipi eklendi
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsMenuOpen(false);
       }
     };
