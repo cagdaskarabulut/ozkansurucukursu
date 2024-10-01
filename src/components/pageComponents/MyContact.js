@@ -9,20 +9,22 @@ export default function ContactPage() {
   const [message, setMessage] = useState("");
   const [isSent, setIsSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [rateLimitError, setRateLimitError] = useState(false); // Rate limit hatası
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setRateLimitError(false); // Hata mesajını sıfırlıyoruz
 
     // EmailService kullanılıyor
-    const isEmailSent = await EmailService.sendAnEmail({
+    const result = await EmailService.sendAnEmail({
       name,
       email,
       subject,
       message,
     });
 
-    if (isEmailSent) {
+    if (result.success) {
       setIsSent(true);
       setName("");
       setEmail("");
@@ -31,10 +33,12 @@ export default function ContactPage() {
       // Konfeti tetikleniyor
       ConfettiService.triggerConfetti();
 
-      // 5 saniye sonra popup otomatik kapanıyor ve MyServices içindeki popup'ı da kapatıyor (eğer handleClosePopup varsa)
+      // 5 saniye sonra popup otomatik kapanıyor
       setTimeout(() => {
         setIsSent(false);
       }, 5000);
+    } else if (result.error === "rate-limit") {
+      setRateLimitError(true); // Rate limit hatası olduğunda popup göster
     }
 
     setIsLoading(false);
@@ -53,6 +57,26 @@ export default function ContactPage() {
             </h2>
             <button
               onClick={() => setIsSent(false)}
+              className="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-secondary"
+            >
+              Tamam
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Rate limit hatası popup'ı */}
+      {rateLimitError && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-8 rounded-3xl shadow-lg text-center">
+            <h2 className="text-2xl font-bold mb-4 text-red-600">
+              Çok fazla istek!
+            </h2>
+            <p className="text-black mb-4">
+              1 dakika içinde en fazla 3 mesaj gönderebilirsiniz.
+            </p>
+            <button
+              onClick={() => setRateLimitError(false)}
               className="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-secondary"
             >
               Tamam
@@ -132,6 +156,8 @@ export default function ContactPage() {
             </button>
           </form>
         </div>
+
+        {/* Google Maps iframe'i */}
         <div className="h-[500px] md:h-auto">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2985.1114956986617!2d35.89209927592796!3d41.566831471277666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4087d89d7c8bb4d5%3A0x9bbb493596929a8!2zw5Z6ZWwgQmFmcmEgw5Z6a2FuIFPDvHLDvGPDvCBLdXJzdQ!5e0!3m2!1str!2str!4v1725441766864!5m2!1str!2str"

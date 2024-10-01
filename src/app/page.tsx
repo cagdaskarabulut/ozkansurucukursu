@@ -414,12 +414,21 @@ export default function Home() {
         {/* Ayıraç Çizgisi ve Alt Metinler */}
         <div className="mt-8 pt-4">
           <div className="w-4/5 mx-auto border-t border-gray-700"></div>{" "}
-          <div className="flex flex-col md:flex-row justify-between items-center mt-4 mx-32">
-            <p className="text-sm">
-              © Özkan Sürücü Kursu, All Rights Reserved.
-            </p>
-            <p className="text-sm">Designed by Karabulut Software</p>
-          </div>
+          {!isMobile && (
+            <div className="flex flex-col md:flex-row justify-between items-center mt-4 mx-32">
+              <p className="text-sm">
+                © Özkan Sürücü Kursu, All Rights Reserved.
+              </p>
+              <p className="text-sm">Designed by Karabulut Software</p>
+            </div>
+          )}
+          {isMobile && (
+            <div className="flex flex-col md:flex-row justify-between items-center mt-4 mx-24">
+              <p className="text-xs">© Özkan Sürücü Kursu</p>
+              <br />
+              <p className="text-xs">Designed by Karabulut Software</p>
+            </div>
+          )}
         </div>
       </footer>
     );
