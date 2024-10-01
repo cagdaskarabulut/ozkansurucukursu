@@ -1,10 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title:
-    "Özel Özkan Sürücü Kursu | Samsun ve Bafra'da Profesyonel Sürüş Eğitimi | B, B1, A, A1, A2, D, D1, M Sınıfı Ehliyet | Güvenli Sürüş",
+  title: "Özel Özkan Sürücü Kursu",
   description:
-    "Özel Özkan Sürücü Kursu, Samsun ve Bafra'da profesyonel eğitmenler eşliğinde B, B1, A, A1, A2, D, D1 ve M sınıfı ehliyetler için güvenli sürüş eğitimi sunar. Deneyimli kadromuz ve modern araçlarımızla, sürüş becerilerinizi geliştirin ve hızlıca ehliyetinizi kazanın. Bafra ve Samsun'da en iyi ehliyet kursu arayışınızda doğru adrestesiniz.",
+    "Özel Özkan Sürücü Kursu | Samsun ve Bafra'da Profesyonel Sürüş Eğitimi | B, B1, A, A1, A2, D, D1, M Sınıfı Ehliyet | Güvenli Sürüş",
 };
 
 export default function RootLayout({
@@ -13,9 +12,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const title =
-    "Özel Özkan Sürücü Kursu | Samsun ve Bafra'da Profesyonel Sürüş Eğitimi | B, B1, A, A1, A2, D, D1, M Sınıfı Ehliyet | Güvenli Sürüş";
+    "Özel Bafra Özkan Sürücü Kursu | Samsun ve Bafra'da Profesyonel Sürüş Eğitimi | B, B1, A, A1, A2, D, D1, M Sınıfı Ehliyet | Güvenli Sürüş";
   const descriptionContent =
-    "Özel Özkan Sürücü Kursu, Samsun ve Bafra'da profesyonel eğitmenler eşliğinde B, B1, A, A1, A2, D, D1 ve M sınıfı ehliyetler için güvenli sürüş eğitimi sunar. Deneyimli kadromuz ve modern araçlarımızla, sürüş becerilerinizi geliştirin ve hızlıca ehliyetinizi kazanın. Bafra ve Samsun'da en iyi ehliyet kursu arayışınızda doğru adrestesiniz.";
+    "Özel Bafra Özkan Sürücü Kursu, Samsun ve Bafra'da profesyonel eğitmenler eşliğinde B, B1, A, A1, A2, D, D1 ve M sınıfı ehliyetler için güvenli sürüş eğitimi sunar. Deneyimli kadromuz ve modern araçlarımızla, sürüş becerilerinizi geliştirin ve hızlıca ehliyetinizi kazanın. Bafra ve Samsun'da en iyi ehliyet kursu arayışınızda doğru adrestesiniz.";
   const keywordsContent =
     "Bafra sürücü kursu, Samsun sürücü kursu, Bafra ehliyet kursu, Samsun ehliyet kursu, güvenli sürüş eğitimi, B sınıfı ehliyet, B1 sınıfı ehliyet, A sınıfı ehliyet, A1 sınıfı ehliyet, A2 sınıfı ehliyet, D sınıfı ehliyet, D1 sınıfı ehliyet, M sınıfı ehliyet, Bafra araba ehliyeti, Samsun motor ehliyeti, lider sürücü kursu, ehliyet kursu Bafra, ehliyet kursu Samsun, Özkan Sürücü Kursu";
   const siteName = "ozkansurucukursu";

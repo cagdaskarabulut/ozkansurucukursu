@@ -5,17 +5,28 @@ import { ImagesSlider } from "../ui/image-slider";
 
 export default function MyImageSlider() {
   const images = ["images/slider-2.png", "images/slider-3.jpg"];
+
   const getNextMonth = () => {
     const currentDate = new Date();
-    const nextMonthDate = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth() + 1
-    );
-    const nextMonthName = new Intl.DateTimeFormat("tr-TR", {
-      month: "long",
-    }).format(nextMonthDate);
+    const currentDay = currentDate.getDate(); // Şu anki gün
+    let monthDate;
 
-    return nextMonthName;
+    if (currentDay >= 9) {
+      // Eğer gün 9 veya sonrası ise bir sonraki ayı göster
+      monthDate = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth() + 1
+      );
+    } else {
+      // Eğer gün 9'dan önce ise bu ayı göster
+      monthDate = new Date(currentDate.getFullYear(), currentDate.getMonth());
+    }
+
+    const monthName = new Intl.DateTimeFormat("tr-TR", {
+      month: "long",
+    }).format(monthDate);
+
+    return monthName;
   };
 
   return (
