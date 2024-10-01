@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { EmailService } from "../../services/EmailService"; // EmailService import ediliyor
 import { ConfettiService } from "../../services/ConfettiService"; // ConfettiService import ediliyor
+import ScrollToPopup from "../myReusableComponents/ScrollToPopup";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -49,7 +50,8 @@ export default function ContactPage() {
       <h1 className="text-3xl font-bold text-center mb-12">İletişim</h1>
 
       {/* Başarı popup'ı */}
-      {isSent && (
+      {/* {isSent && ( */}
+      <ScrollToPopup isOpen={isSent} onClose={() => handleClosePopup()}>
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-8 rounded-3xl shadow-lg text-center">
             <h2 className="text-2xl font-bold mb-4 text-black">
@@ -63,10 +65,15 @@ export default function ContactPage() {
             </button>
           </div>
         </div>
-      )}
+      </ScrollToPopup>
+      {/* )} */}
 
       {/* Rate limit hatası popup'ı */}
-      {rateLimitError && (
+      <ScrollToPopup
+        isOpen={rateLimitError}
+        onClose={() => setRateLimitError(false)}
+      >
+        {/* {rateLimitError && ( */}
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-8 rounded-3xl shadow-lg text-center">
             <h2 className="text-2xl font-bold mb-4 text-red-600">
@@ -83,7 +90,8 @@ export default function ContactPage() {
             </button>
           </div>
         </div>
-      )}
+        {/* )} */}
+      </ScrollToPopup>
 
       <div className="grid md:grid-cols-2 gap-8">
         <div>

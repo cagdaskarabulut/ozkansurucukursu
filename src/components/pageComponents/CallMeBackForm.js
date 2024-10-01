@@ -2,6 +2,7 @@ import { useState } from "react";
 import React from "react";
 import { EmailService } from "../../services/EmailService";
 import { ConfettiService } from "../../services/ConfettiService";
+import ScrollToPopup from "../myReusableComponents/ScrollToPopup";
 
 export default function CallMeBackForm({ handleClosePopup, about }) {
   const [name, setName] = useState("");
@@ -64,7 +65,7 @@ export default function CallMeBackForm({ handleClosePopup, about }) {
       <p className="mb-4">Size en kısa sürede dönüş sağlayacağız.</p>
 
       {/* Mesaj başarıyla gönderildi popup'ı */}
-      {isSent && (
+      {/* {isSent && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-8 rounded-3xl shadow-lg text-center">
             <h2 className="text-2xl font-bold mb-4 text-black">
@@ -83,10 +84,35 @@ export default function CallMeBackForm({ handleClosePopup, about }) {
             </button>
           </div>
         </div>
-      )}
+      )} */}
+
+      <ScrollToPopup isOpen={isSent} onClose={() => handleClosePopup()}>
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-8 rounded-3xl shadow-lg text-center">
+            <h2 className="text-2xl font-bold mb-4 text-black">
+              Mesaj başarıyla gönderildi!
+            </h2>
+            <button
+              onClick={() => {
+                setIsSent(false);
+                if (handleClosePopup) {
+                  handleClosePopup(); // handleClosePopup varsa çalıştırılıyor
+                }
+              }}
+              className="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-secondary"
+            >
+              Tamam
+            </button>
+          </div>
+        </div>
+      </ScrollToPopup>
 
       {/* Rate limit hatası popup'ı */}
-      {rateLimitError && (
+      <ScrollToPopup
+        isOpen={rateLimitError}
+        onClose={() => () => setRateLimitError(false)}
+      >
+        {/* {rateLimitError && ( */}
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-8 rounded-3xl shadow-lg text-center">
             <h2 className="text-2xl font-bold mb-4 text-red-600">
@@ -103,7 +129,8 @@ export default function CallMeBackForm({ handleClosePopup, about }) {
             </button>
           </div>
         </div>
-      )}
+        {/* )} */}
+      </ScrollToPopup>
 
       <div className="space-y-4">
         <p>
