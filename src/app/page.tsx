@@ -20,6 +20,25 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Hamburger menü durumu
   const menuRef = useRef<HTMLDivElement | null>(null); // Ref tipi tanımlandı
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // 768px altındaki genişlikler mobil cihaz olarak kabul edilir
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Sayfa ilk yüklendiğinde ekran genişliğini kontrol et
+    handleResize();
+
+    // Ekran boyutu değiştiğinde handleResize'i tetikleyelim
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup: event listener'ı kaldırıyoruz
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -89,22 +108,34 @@ export default function Home() {
     return (
       <header
         className={`fixed w-full z-50 opacity-90 transition-colors duration-300 ${
-          scrollY > 50
+          isMobile
+            ? "bg-primary-foreground text-primary"
+            : scrollY > 50
             ? "bg-primary text-primary-foreground"
             : "bg-white text-gray-600"
         } shadow-sm`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold transition-colors">
-            <img
-              width={48}
-              height={48}
-              src={
-                scrollY > 50 ? "/images/logo-inverse.png" : "/images/logo.png"
-              }
-              alt="Site Logo"
-              className="transition-colors"
-            />
+            {isMobile ? (
+              <img
+                width={48}
+                height={48}
+                src={"/images/logo.png"}
+                alt="Site Logo"
+                className="transition-colors"
+              />
+            ) : (
+              <img
+                width={48}
+                height={48}
+                src={
+                  scrollY > 50 ? "/images/logo-inverse.png" : "/images/logo.png"
+                }
+                alt="Site Logo"
+                className="transition-colors"
+              />
+            )}
           </div>
 
           {/* Hamburger Menü butonu (Mobil ekranlar için) */}
@@ -115,7 +146,9 @@ export default function Home() {
               ) : (
                 <MenuIcon
                   className={
-                    scrollY > 50
+                    isMobile
+                      ? ""
+                      : scrollY > 50
                       ? "bg-primary text-primary-foreground"
                       : "bg-white bg-primary"
                   }
