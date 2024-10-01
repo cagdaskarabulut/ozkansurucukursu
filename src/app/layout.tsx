@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+
 export const metadata: Metadata = {
   title: "Özel Özkan Sürücü Kursu",
   description:
@@ -19,57 +20,43 @@ export default function RootLayout({
     "Bafra sürücü kursu, Samsun sürücü kursu, Bafra ehliyet kursu, Samsun ehliyet kursu, güvenli sürüş eğitimi, B sınıfı ehliyet, B1 sınıfı ehliyet, A sınıfı ehliyet, A1 sınıfı ehliyet, A2 sınıfı ehliyet, D sınıfı ehliyet, D1 sınıfı ehliyet, M sınıfı ehliyet, Bafra araba ehliyeti, Samsun motor ehliyeti, lider sürücü kursu, ehliyet kursu Bafra, ehliyet kursu Samsun, Özkan Sürücü Kursu";
   const siteName = "ozkansurucukursu";
   const siteUrl = "https://www.ozkansurucukursu.com.tr";
-  const imageFullPathUrl = siteUrl + "/images/favicon.ico";
-  const iconHref = siteUrl + "/images/favicon.ico";
+  const imageFullPathUrl = `${siteUrl}/images/favicon.ico`;
+  const iconHref = `${siteUrl}/images/favicon.ico`;
   const imageAlt = "Özel Bafra Özkan Sürücü Kursu";
+
   return (
     <html lang="en">
       <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title}</title>
+
+        {/* Basic SEO */}
         <meta name="title" content={title} />
-        <meta data-rh="true" property="og:title" content={title} />
-        <meta data-rh="true" property="twitter:title" content={title} />
-
         <meta name="description" content={descriptionContent} />
-        <meta
-          data-rh="true"
-          property="og:description"
-          content={descriptionContent}
-        />
-        <meta
-          data-rh="true"
-          property="twitter:description"
-          content={descriptionContent}
-        />
-
         <meta name="keywords" content={keywordsContent} />
-        <meta name="og:keywords" content={keywordsContent} />
-
-        <meta data-rh="true" property="og:site_name" content={siteName} />
-        <meta name="application-name" content={siteName} />
-
         <meta name="robots" content="index,follow" />
-
-        <meta property="og:image" content={imageFullPathUrl} itemProp="image" />
-
-        <meta property="og:image:alt" content={imageAlt} />
-
-        <link rel="icon" href={iconHref} />
-
-        <meta httpEquiv="Content-Language" content="en" />
         <meta name="author" content="Çağdaş Y. Karabulut" />
         <meta name="revisit-after" content="7 days" />
 
-        <meta name="doc-type" content="Web Page" />
-        <meta name="doc-class" content="Published" />
-        <meta name="doc-rights" content="Public" />
+        {/* Open Graph Tags */}
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={descriptionContent} />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:image" content={imageFullPathUrl} />
+        <meta property="og:image:alt" content={imageAlt} />
         <meta property="og:type" content="website" />
-        <meta
-          httpEquiv="Copyright"
-          content="Copyright 2024 www.ozkansurucukursu.com.tr"
-        />
-        <meta name="mobile-web-app-capable" content="yes" />
 
-        {/* <meta name="google-adsense-account" content="" />       */}
+        {/* Twitter Card Tags */}
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={descriptionContent} />
+
+        {/* Favicon */}
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
+        {/* Misc Meta */}
+        <meta name="application-name" content={siteName} />
+        <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body>{children}</body>
     </html>
