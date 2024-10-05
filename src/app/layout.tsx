@@ -2,9 +2,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Özel Özkan Sürücü Kursu",
+  title: "Özel Bafra Özkan Sürücü Kursu",
   description:
-    "Özel Özkan Sürücü Kursu | Samsun ve Bafra'da Profesyonel Sürüş Eğitimi | B, B1, A, A1, A2, D, D1, M Sınıfı Ehliyet | Güvenli Sürüş",
+    "Özel Bafra Özkan Sürücü Kursu | Samsun ve Bafra'da Profesyonel Sürüş Eğitimi | B, B1, A, A1, A2, D, D1, M Sınıfı Ehliyet | Güvenli Sürüş",
 };
 
 export default function RootLayout({
