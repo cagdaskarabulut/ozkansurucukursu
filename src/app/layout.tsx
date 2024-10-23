@@ -1,6 +1,5 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Özel Bafra Özkan Sürücü Kursu",
@@ -76,7 +75,6 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body>{children}</body>
-      <Analytics />
     </html>
   );
 }

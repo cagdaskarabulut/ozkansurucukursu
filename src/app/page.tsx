@@ -1,4 +1,5 @@
 "use client";
+import { Analytics } from "@vercel/analytics/react";
 import { useEffect, useState, useRef } from "react";
 import MyImageSlider from "../components/myComponents/MyImageSlider";
 import MyServices from "../components/pageComponents/MyServices";
@@ -457,6 +458,7 @@ export default function Home() {
 
       <FloatingButtons />
       <ScrollToTopButton showBelow={250} />
+      <Analytics />
     </div>
   );
 }
