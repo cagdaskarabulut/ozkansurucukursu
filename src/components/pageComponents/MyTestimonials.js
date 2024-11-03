@@ -15,8 +15,6 @@ const MyTestimonials = () => {
     const fetchTestimonials = async () => {
       const response = await fetch(`/api/googleReviews`);
       const data = await response.json();
-      console.log(data);
-
       setTestimonials(data);
     };
     fetchTestimonials();

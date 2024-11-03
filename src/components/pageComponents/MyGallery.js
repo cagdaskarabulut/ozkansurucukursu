@@ -7,7 +7,17 @@ import { useState, useEffect } from "react";
 const MyGallery = () => {
   const [posts, setPosts] = useState([]);
 
+  // const test = async () => {
+  //   const url = `https://graph.instagram.com/me/media?fields=id,caption,media_url,timestamp,media_type,permalink&access_token=${process.env.INSTAGRAM_APP_ID}`;
+  //   const data = await fetch(url);
+  //   const feed = await data.json();
+  //   console.log(feed.data);
+  // };
+
   useEffect(() => {
+    // test();
+    // console.log("test çalıştı");
+
     // Test için sahte (mock) veriyi kullanıyoruz
     const mockPosts = [
       {
