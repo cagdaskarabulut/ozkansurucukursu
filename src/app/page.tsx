@@ -196,6 +196,23 @@ export default function Home() {
                 </button>
               </li>
               <li>
+                <button onClick={() => handleScroll("ekibimiz")}>
+                  <span
+                    className={`font-bold relative pb-1 group ${
+                      scrollY > 50
+                        ? "text-primary-foreground hover:text-cyan-300"
+                        : "text-gray-600 hover:text-red-600"
+                    }`}
+                  >
+                    Ekibimiz
+                    <span
+                      className="absolute left-0 bottom-0 w-0 h-[2px] bg-current transition-all duration-500 group-hover:w-full"
+                      aria-hidden="true"
+                    ></span>
+                  </span>
+                </button>
+              </li>
+              <li>
                 <button onClick={() => handleScroll("yorumlar")}>
                   <span
                     className={`font-bold relative pb-1 group ${
@@ -304,6 +321,11 @@ export default function Home() {
                 </button>
               </li>
               <li>
+                <button onClick={() => handleScroll("ekibimiz")}>
+                  <span className="font-bold text-gray-600">Ekibimiz</span>
+                </button>
+              </li>
+              <li>
                 <button onClick={() => handleScroll("yorumlar")}>
                   <span className="font-bold text-gray-600">Yorumlar</span>
                 </button>
@@ -394,6 +416,14 @@ export default function Home() {
             </p>
             <p>
               <button
+                onClick={() => handleScroll("ekibimiz")}
+                className="hover:text-secondary"
+              >
+                Ekibimiz
+              </button>
+            </p>
+            <p>
+              <button
                 onClick={() => handleScroll("yorumlar")}
                 className="hover:text-secondary"
               >
@@ -443,13 +473,19 @@ export default function Home() {
       <section id="anasayfa" className="relative h-[500px]">
         <MyImageSlider />
       </section>
-      <section id="hizmetlerimiz" className="animate-on-scroll py-16">
+      <section
+        id="hizmetlerimiz"
+        className="animate-on-scroll py-16 bg-gray-100"
+      >
         <MyServices />
+      </section>
+      <section id="ekibimiz" className="animate-on-scroll py-16 ">
+        <MyTeam />
       </section>
       <section id="yorumlar" className="animate-on-scroll py-16 bg-gray-100">
         <MyTestimonials />
       </section>
-      <section id="iletisim" className="animate-on-scroll py-16">
+      <section id="iletisim" className="animate-on-scroll py-16 ">
         <MyContact />
       </section>
       <section>

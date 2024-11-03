@@ -6,9 +6,10 @@ import MyInfiniteMovingCards from "../myComponents/MyInfiniteMovingCards";
 const MyTeam = () => {
   const team = [
     {
-      name: "John Doe",
-      designation: "Chief Engineer",
-      image: "/images/ekibimiz/cagdas.jpg",
+      name: "Emine Gül Büyükkeskin",
+      title: "Direksiyon Eğitmeni",
+      speciality: "B | B Otomatik",
+      image: "/images/ekibimiz/Emine Gül Büyükkeskin.jpg",
       socialLinks: [
         { href: "https://linkedin.com", icon: "/icons/linkedin.svg" },
         { href: "https://instagram.com", icon: "/icons/instagram.svg" },
@@ -17,9 +18,10 @@ const MyTeam = () => {
       ],
     },
     {
-      name: "Jane Smith",
-      designation: "Project Manager",
-      image: "/images/ekibimiz/cagdas.jpg",
+      name: "Selim Meral",
+      title: "Direksiyon Eğitmeni",
+      speciality: "A1 | A2 | B | B Otomatik | D",
+      image: "/images/ekibimiz/Selim Meral.jpeg",
       socialLinks: [
         { href: "https://linkedin.com", icon: "/icons/linkedin.svg" },
         { href: "https://instagram.com", icon: "/icons/instagram.svg" },
@@ -28,9 +30,10 @@ const MyTeam = () => {
       ],
     },
     {
-      name: "Alex Johnson",
-      designation: "Architect",
-      image: "/images/ekibimiz/cagdas.jpg",
+      name: "Tolga Demir",
+      title: "Direksiyon Eğitmeni",
+      speciality: "A1 | A2 | A | B | B Otomatik",
+      image: "/images/ekibimiz/Tolga Demir.jpeg",
       socialLinks: [
         { href: "https://linkedin.com", icon: "/icons/linkedin.svg" },
         { href: "https://instagram.com", icon: "/icons/instagram.svg" },
@@ -39,9 +42,10 @@ const MyTeam = () => {
       ],
     },
     {
-      name: "Emily Davis",
-      designation: "Safety Officer",
-      image: "/images/ekibimiz/cagdas.jpg",
+      name: "Elif Yılmaz Sabancıoğlu",
+      title: "Direksiyon Eğitmeni",
+      speciality: "B | B Otomatik",
+      image: "/images/ekibimiz/Elif Yılmaz Sabancıoğlu.jpg",
       socialLinks: [
         { href: "https://linkedin.com", icon: "/icons/linkedin.svg" },
         { href: "https://instagram.com", icon: "/icons/instagram.svg" },
@@ -72,8 +76,11 @@ const MyTeam = () => {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                  <p className="text-gray-600 mb-4">{member.designation}</p>
-                  <div className="flex space-x-4">
+                  <p className="text-sm italic font-semibold mb-2 text-gray-400">
+                    {member.title}
+                  </p>
+                  <p className="text-gray-600 mb-4">{member.speciality}</p>
+                  {/* <div className="flex space-x-4">
                     {member.socialLinks.map((link, linkIndex) => (
                       <Link href={link.href} key={linkIndex}>
                         <Image
@@ -85,7 +92,7 @@ const MyTeam = () => {
                         />
                       </Link>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}
