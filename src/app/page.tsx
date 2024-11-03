@@ -470,7 +470,7 @@ export default function Home() {
       <section>
         <MyHeader />
       </section>
-      <section id="anasayfa" className="relative h-[500px]">
+      <section id="anasayfa" className="relative h-[500px] ">
         <MyImageSlider />
       </section>
       <section

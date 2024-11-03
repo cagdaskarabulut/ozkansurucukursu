@@ -9,7 +9,7 @@ const MyTeam = () => {
       name: "Emine Gül Büyükkeskin",
       title: "Direksiyon Eğitmeni",
       speciality: "B | B Otomatik",
-      image: "/images/ekibimiz/Emine Gül Büyükkeskin.jpg",
+      image: "/images/ekibimiz/Emine Gül Büyükkeskin.jpeg",
       socialLinks: [
         { href: "https://linkedin.com", icon: "/icons/linkedin.svg" },
         { href: "https://instagram.com", icon: "/icons/instagram.svg" },
