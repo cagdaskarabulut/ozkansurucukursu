@@ -20,8 +20,8 @@ export default function RootLayout({
     "Bafra sürücü kursu, Samsun sürücü kursu, Bafra ehliyet kursu, Samsun ehliyet kursu, güvenli sürüş eğitimi, B sınıfı ehliyet, B1 sınıfı ehliyet, A sınıfı ehliyet, A1 sınıfı ehliyet, A2 sınıfı ehliyet, D sınıfı ehliyet, D1 sınıfı ehliyet, M sınıfı ehliyet, Bafra araba ehliyeti, Samsun motor ehliyeti, lider sürücü kursu, ehliyet kursu Bafra, ehliyet kursu Samsun, Özkan Sürücü Kursu";
   const siteName = "Özel Bafra Özkan Sürücü Kursu";
   const siteUrl = "https://www.ozkansurucukursu.com.tr";
-  const imageFullPathUrl = `${siteUrl}/images/favicon.ico`;
-  const iconHref = `${siteUrl}/images/favicon.ico`;
+  const imageFullPathUrl = `${siteUrl}/favicon.ico`;
+  const iconHref = `${siteUrl}/favicon.ico`;
   const imageAlt = "Özel Bafra Özkan Sürücü Kursu";
 
   return (
@@ -68,7 +68,7 @@ export default function RootLayout({
         <meta name="twitter:description" content={descriptionContent} />
 
         {/* Favicon */}
-        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href={iconHref} type="image/x-icon" />
 
         {/* Misc Meta */}
         <meta name="application-name" content={siteName} />
