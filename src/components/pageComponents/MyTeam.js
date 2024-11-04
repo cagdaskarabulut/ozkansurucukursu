@@ -21,7 +21,7 @@ const MyTeam = () => {
       name: "Selim Meral",
       title: "Direksiyon Eğitmeni",
       speciality: "A1 | A2 | B | B Otomatik | D",
-      image: "/images/ekibimiz/Selim Meral.jpeg",
+      image: "/images/ekibimiz/Selim Meral.jpg",
       socialLinks: [
         { href: "https://linkedin.com", icon: "/icons/linkedin.svg" },
         { href: "https://instagram.com", icon: "/icons/instagram.svg" },
@@ -33,7 +33,7 @@ const MyTeam = () => {
       name: "Tolga Demir",
       title: "Direksiyon Eğitmeni",
       speciality: "A1 | A2 | A | B | B Otomatik",
-      image: "/images/ekibimiz/Tolga Demir.jpeg",
+      image: "/images/ekibimiz/Tolga Demir.jpg",
       socialLinks: [
         { href: "https://linkedin.com", icon: "/icons/linkedin.svg" },
         { href: "https://instagram.com", icon: "/icons/instagram.svg" },
