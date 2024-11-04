@@ -77,7 +77,7 @@ const MyGallery = () => {
   if (posts.length > 0) {
     return (
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center mb-12">Galeri</h1>
+        <h2 className="text-3xl font-bold text-center mb-12">Galeri</h2>
         <MyInfiniteMovingCards
           direction="left"
           components={posts.map((post) => (

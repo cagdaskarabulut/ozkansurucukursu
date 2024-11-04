@@ -57,7 +57,7 @@ const MyTeam = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-3xl font-bold text-center mb-12">Ekibimiz</h1>
+      <h2 className="text-3xl font-bold text-center mb-12">Ekibimiz</h2>
       <MyInfiniteMovingCards
         direction="right"
         components={

@@ -61,7 +61,7 @@ const MyTestimonials = () => {
   if (testimonials.length > 0) {
     return (
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center mb-12">Yorumlar</h1>
+        <h2 className="text-3xl font-bold text-center mb-12">Yorumlar</h2>
         <MyInfiniteMovingCards
           direction="left"
           components={testimonials.map((client, index) => (
