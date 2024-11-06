@@ -470,7 +470,15 @@ export default function Home() {
       <section>
         <MyHeader />
       </section>
-      <section id="anasayfa" className="relative h-[500px] ">
+      <section
+        id="anasayfa"
+        className="relative h-[500px]"
+        // style={{
+        //   backgroundImage: `url('/images/logo.png')`,
+        //   backgroundSize: "cover",
+        //   backgroundPosition: "center",
+        // }}
+      >
         <MyImageSlider />
       </section>
       <section

@@ -1,6 +1,10 @@
-# Allow all web crawlers access to all content
 User-agent: *
-Disallow: 
+Disallow: /iletisim
+Disallow: /b-sinifi-ehliyet
+Disallow: /e-sinifi-ehliyet
+Disallow: /hakkimizda
+Disallow: /a-sinifi-ehliyet
+Disallow: /ozel-direksiyon-dersi
 
 # Sitemaps
 Sitemap: https://www.ozkansurucukursu.com.tr/sitemap.xml
